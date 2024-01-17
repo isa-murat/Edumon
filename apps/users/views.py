@@ -1,15 +1,13 @@
-from rest_framework import viewsets
-from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.viewsets import GenericViewSet
+from rest_framework import mixins
 
+from apps.users.serializer import UserRegistrationSerializer
 from apps.users.models import Users
-from apps.users.serializer import UserSerializer
 
-class RegisterViewSets(viewsets.ModelViewSet):
+class UserRegistrationView(mixins.CreateModelMixin,
+                           mixins.ListModelMixin,
+                           GenericViewSet):
+
+    serializer_class = UserRegistrationSerializer
     queryset = Users.objects.all()
-    serializer_class = UserSerializer
-
-
-
-
-    
