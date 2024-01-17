@@ -15,13 +15,6 @@ class Users(AbstractUser):
     birth_day = models.DateField()
     phone_number = models.CharField(validators=[RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Telefon numarsını doğru girin.")],max_length=11, unique=True)
     user_type = models.CharField(choices=USER_TYPE)
-    is_staff = None
-    is_active = None
-    date_joined = None
-    is_superuser = None
-    last_login = None
-    user_permissions = None
-    groups = None
 
 
 class Teachers(models.Model):
